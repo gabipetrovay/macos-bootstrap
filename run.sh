@@ -20,8 +20,16 @@ function brew_install {
   then
     NAME=${FORMULA}
   fi
-echo $FORMULA
+
   echo "📦 Installing ${NAME} (brew) ..."
+  
+  # any custom preinstall steps
+  if [ -f ./"${FORMULA}/preinstall.sh" ]
+  then
+    echo "  💟 Running preinstall script for ${NAME}"
+    ./"${FORMULA}/preinstall.sh"
+  fi
+  
   if [ ! -f "${INSTALL_GUARD_PATH}" ]
   then
     # main installation
@@ -31,7 +39,7 @@ echo $FORMULA
     if [ -f ./"${FORMULA}/setup.sh" ]
     then
       ./"${FORMULA}/setup.sh"
-      echo "  ✴️  ${NAME} configured"
+      echo "  💟 ${NAME} configured"
     fi
     echo "  ✅ ${NAME} installed"
   else
@@ -86,7 +94,7 @@ brew_install iterm2 "/Applications/iTerm.app/Contents/MacOS/iTerm2" iTerm2
 brew_install jq
 brew_install tree
 brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/MacOS/Microsoft Outlook" "Microsoft Outlook"
-brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Microsoft Teams" "Microsoft Teams"
+brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
 brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
 #brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
 
