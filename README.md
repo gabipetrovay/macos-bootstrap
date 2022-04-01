@@ -1,4 +1,4 @@
-# MacOS Bootstrap for Geeks
+# MacOS Device Bootstrap Script for Geeks
 
 This installs and configures common tools needed by a geek in his/her daily life.
 
