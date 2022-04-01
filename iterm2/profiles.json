@@ -56,7 +56,12 @@
       "Transparency": 0.1,
       "Custom Directory": "No",
       "Has Hotkey": false,
-      "Horizontal Spacing": 1
+      "Horizontal Spacing": 1,
+      "Ansi 4 Color" : {
+        "Red Component" : 0.27450980392156865,
+        "Green Component" : 0.3843137254901961,
+        "Blue Component" : 0.88235294117647056
+      }
     }
   ]
 }
