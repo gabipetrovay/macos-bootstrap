@@ -6,6 +6,17 @@ set -e
 sudo true
 
 
+function load_secrets {
+  local COMPONENT=$1
+
+  if [ -f ./"${COMPONENT}/secrets.sh" ]
+  then
+    source ./"${COMPONENT}/secrets.sh"
+    echo "  🔐 Loaded secrets for ${COMPONENT}"
+  fi
+}
+
+
 function brew_install {
   local FORMULA=$1
   local INSTALL_GUARD_PATH=$2
@@ -23,36 +34,49 @@ function brew_install {
 
   echo "📦 Installing ${NAME} (brew) ..."
   
+  if [ -f "${INSTALL_GUARD_PATH}" ]
+  then
+    echo "  🆗 ${NAME} already installed"
+    return
+  fi
+
+  # load secrets, if any
+  load_secrets "${FORMULA}"
+
   # any custom preinstall steps
   if [ -f ./"${FORMULA}/preinstall.sh" ]
   then
     echo "  💟 Running preinstall script for ${NAME}"
     ./"${FORMULA}/preinstall.sh"
   fi
-  
-  if [ ! -f "${INSTALL_GUARD_PATH}" ]
-  then
-    # main installation
-    brew install --quiet "${FORMULA}"
 
-    # any custom setup steps
-    if [ -f ./"${FORMULA}/setup.sh" ]
-    then
-      ./"${FORMULA}/setup.sh"
-      echo "  💟 ${NAME} configured"
-    fi
-    echo "  ✅ ${NAME} installed"
-  else
-    echo "  🆗 ${NAME} already installed"
+  # main installation
+  brew install --quiet "${FORMULA}"
+
+  # any custom setup steps
+  if [ -f ./"${FORMULA}/setup.sh" ]
+  then
+    ./"${FORMULA}/setup.sh"
+    echo "  💟 ${NAME} configured"
   fi
-  
+  echo "  ✅ ${NAME} installed"
 }
 
 
 function configure {
   local TARGET=$1
+  local CONFIGURE_GUARD_PATH=$2
 
   echo "🛠 Configuring ${TARGET} ..."
+
+  if [ -f "${CONFIGURE_GUARD_PATH}" ]
+  then
+    echo "  🆗 ${TARGET} already configured"
+    return
+  fi
+
+  # load secrets, if any
+  load_secrets "${TARGET}"
 
   # any setup script
   if [ -f ./"${TARGET}/setup.sh" ]
@@ -108,6 +132,8 @@ brew_install go
 
 
 #
-# configure <target>
+# configure <target> [<configure_guard_path>]
 #
 configure git
+configure microsoft-company-portal "/Applications/Company Portal.app/Contents/MacOS/Company Portal"
+

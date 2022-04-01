@@ -46,11 +46,14 @@ The `secrets.sh` files are ignored in this repo. You can use these files to `exp
 them from the other `setup.sh` script files. For example, the `git/secrets.sh` might contain:
 
 ```bash
-#!/usr/bin/env bash
-
 export GIT_USER_NAME="Your Name"
 export GIT_USER_EMAIL=your.email@example.com
 ```
+
+**NOTE**: The secrets.sh files don't need:
+
+- to be executable, as they are called using `source`
+- the bash shebang, as they will be invoked in the context of the main script (i.e. Bash)
 
 ## Contribute
 
