@@ -67,7 +67,7 @@ function configure {
   local TARGET=$1
   local CONFIGURE_GUARD_PATH=$2
 
-  echo "🛠 Configuring ${TARGET} ..."
+  echo "🛠  Configuring ${TARGET} ..."
 
   if [ -f "${CONFIGURE_GUARD_PATH}" ]
   then
