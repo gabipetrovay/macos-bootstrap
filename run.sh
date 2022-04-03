@@ -134,6 +134,7 @@ brew_install go
 #
 # configure <target> [<configure_guard_path>]
 #
+configure zsh
 configure iterm2
 configure git
 configure microsoft-company-portal "/Applications/Company Portal.app/Contents/MacOS/Company Portal"
