@@ -82,7 +82,7 @@ function configure {
   if [ -f ./"${TARGET}/setup.sh" ]
   then
     ./"${TARGET}/setup.sh"
-    echo "  ✴️  ${TARGET} configured"
+    echo "  ❇️  ${TARGET} configured"
   else
     echo "  🆘 No setup script found for ${TARGET}"
   fi
