@@ -1,0 +1,1 @@
+export VIM_PACK_DIR=your_plugin_dir
