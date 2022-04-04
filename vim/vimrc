@@ -1,0 +1,93 @@
+syntax on
+
+" new panes should open to the right and bottom
+set splitright
+set splitbelow
+
+" enable the builtin indent plugin based on file extension
+filetype plugin indent on
+filetype indent on
+
+" default tabs and indentation options
+set smartindent
+set smarttab
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+set textwidth=120
+
+" extension-based options
+autocmd FileType sh :setlocal shiftwidth=2 tabstop=2 softtabstop=2 " Two spaces for Bash files
+autocmd FileType yml :setlocal shiftwidth=2 tabstop=2 softtabstop=2 " Two spaces for YML files
+autocmd FileType yaml :setlocal shiftwidth=2 tabstop=2 softtabstop=2 " Two spaces for YAML files
+autocmd FileType go :setlocal noexpandtab " Line length for Go files
+
+" simple recursive grep
+command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
+command! -nargs=1 RecurGrepFast silent exec 'lgrep! <q-args> ./**/*.*' | lopen
+set wildignore+=**/node_modules/**
+nmap ,R :RecurGrep 
+nmap ,r :RecurGrepFast 
+nmap ,wR :RecurGrep <cword><CR>
+nmap ,wr :RecurGrepFast <cword><CR>
+
+"
+" Plugin configuration
+"
+
+" ctrlp
+let g:ctrlp_custom_ignore = 'node_modules'
+
+" ale
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
+"" TODO
+
+"function! BufferDirPath()
+"  return expand('%:h')
+"endfunction
+"
+"function! GitBranch()
+"  return system("git -C \"".BufferDirPath()."\" rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+"endfunction
+"
+"function! GitDirOfBuffer()
+"  let l:gitdir = system("git -C \"".BufferDirPath()."\" rev-parse --absolute-git-dir 2>/dev/null | tr -d '\n'")
+"  return fnamemodify(l:gitdir, ':h')
+"endfunction
+"
+"function! GitStatusline()
+"  let l:gitdirpath = GitDirOfBuffer()
+"  if strlen(l:gitdirpath) > 0
+"    let l:branchname = GitBranch()
+"    let l:gitdirname = fnamemodify(l:gitdirpath, ':t')
+"    return strlen(l:branchname) > 0 ? ' '.l:gitdirname.' ('.l:branchname.') ':''
+"  else
+"    return ''
+"  endif
+"endfunction
+"
+"" status line
+"set laststatus=2                    " always show the status bar
+"set statusline=%t                   " tail of the filename
+"set statusline+=%#StatusLineTerm#   " set the color to a known highligt color
+"set statusline+=%{GitStatusline()}
+"set statusline+=%#Normal#           " clear highlight color
+""set statusline+=[%{strlen(&fenc)?&fenc:'none'}, " file encoding
+""set statusline+=%{&ff}]            " file format
+"set statusline+=%h                  " help file flag
+"set statusline+=%m                  " modified flag
+"set statusline+=%r                  " read only flag
+""set statusline+=%y                  " filetype
+"set statusline+=%=                  " left/right separator
+"set statusline+=%c,                 " cursor column
+"set statusline+=%l/%L               " cursor line/total lines
+"set statusline+=\ %P                " percent through file
+"
+"cabbrev E Explore
+
+"" automatic commands
+"autocmd BufWritePost *.py call flake8#Flake8() | call timer_start(300, { tid -> execute('wincmd j')})
