@@ -112,23 +112,37 @@ export HOMEBREW_NO_INSTALL_CLEANUP=1
 #
 
 # tools
+brew_install dos2unix
+brew_install jq
+brew_install yq
+brew_install tree
+brew_install watch
+brew_install gh
 brew_install google-chrome "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "Google Chrome"
 brew_install visual-studio-code "/opt/homebrew/bin/code" "VS Code"
 brew_install iterm2 "/Applications/iTerm.app/Contents/MacOS/iTerm2" iTerm2
-brew_install jq
-brew_install tree
 brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/MacOS/Microsoft Outlook" "Microsoft Outlook"
 brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
 brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
+brew_install teleport "/opt/homebrew/bin/tsh"
 #brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
+#brew install tmux
+#brew install wget
+#brew install s3cmd
+#brew install bitwarden-cli
+#brew install openfortivpn
 
 # programming languages and frameworks
 brew_install docker
+brew_install lazydocker
 brew_install kubectl
 brew_install kubectx
+#brew install minikube
 brew_install node "/opt/homebrew/bin/node" Node.js
+#brew install nvm
 brew_install python "/opt/homebrew/bin/python3" Python
 brew_install go
+#brew_install helm
 
 
 #
