@@ -150,6 +150,7 @@ brew_install go
 #
 
 configure zsh
+configure ohmyzsh
 configure iterm2
 configure vim
 configure git
