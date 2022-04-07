@@ -1,0 +1,4 @@
+protocol=anyconnect
+server=ac1.ip-plus.net/SWISSCOM
+user=t...@swisscom.ras
+passwd-on-stdin

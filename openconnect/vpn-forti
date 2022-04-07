@@ -1,0 +1,5 @@
+protocol=fortinet
+server=vpn-prd.entcloud.swisscom.com
+servercert=pin-sha256:FEcJpKK3EyobQmF8grIPYsK5AjcB7H9DCjDUOe/pUxo=
+user=t...
+passwd-on-stdin

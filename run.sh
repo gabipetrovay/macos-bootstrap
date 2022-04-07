@@ -118,19 +118,20 @@ brew_install yq
 brew_install tree
 brew_install watch
 brew_install gh
+brew_install openconnect
+#brew install openfortivpn
+#brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
 brew_install google-chrome "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "Google Chrome"
 brew_install visual-studio-code "/opt/homebrew/bin/code" "VS Code"
 brew_install iterm2 "/Applications/iTerm.app/Contents/MacOS/iTerm2" iTerm2
 brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/MacOS/Microsoft Outlook" "Microsoft Outlook"
 brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
-brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
 brew_install teleport "/opt/homebrew/bin/tsh"
 #brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
 #brew install tmux
 #brew install wget
 #brew install s3cmd
 #brew install bitwarden-cli
-#brew install openfortivpn
 
 # programming languages and frameworks
 brew_install docker

@@ -1,0 +1,40 @@
+function vc {
+  vpn cisco "$1"
+}
+
+function vf {
+  vpn forti "$1"
+}
+
+function delete_resolvers {
+  pgrep openconnect > /dev/null && sudo kill -2 `pgrep openconnect`
+  if [[ -z `find /etc/resolver -maxdepth 0 -empty` ]]
+  then
+    sudo rm -f /etc/resolver/*
+  fi
+}
+
+function vpn {
+  local TYPE=$1
+  local TOKEN=$2
+
+  if [[ "${TOKEN}" == "" ]]
+  then
+    return
+  fi
+
+  if [[ "${TYPE}" == "cisco" ]]
+  then
+    CREDS="${RSA_PIN}${TOKEN}"
+  else
+    CREDS="${FORTI_PASSWORD}\n${TOKEN}\n"
+    delete_resolvers
+  fi
+
+  echo "${CREDS}" | nohup sudo openconnect --config ".vpn-${TYPE}" > /dev/null &
+
+  if [[ "${TYPE}" == "forti" ]]
+  then
+    sudo cp ~/resolver/* /etc/resolver/
+  fi
+}
