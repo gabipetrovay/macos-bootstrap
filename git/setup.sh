@@ -11,5 +11,5 @@ if [ -n "${GIT_WORK_CONFIG}" ]
 then
   git config --global "includeIf.${GIT_WORK_CONFIG_CONDITION}.path" "${GIT_WORK_CONFIG_PATH}"
 
-  echo "${GIT_WORK_CONFIG}" >> "${GIT_WORK_CONFIG_PATH}"
+  echo "${GIT_WORK_CONFIG}" > "${GIT_WORK_CONFIG_PATH}"
 fi
