@@ -1,5 +1,9 @@
 syntax on
 
+" enable modeline
+set modeline
+set modelines=5
+
 " new panes should open to the right and bottom
 set splitright
 set splitbelow
