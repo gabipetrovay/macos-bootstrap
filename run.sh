@@ -157,3 +157,4 @@ configure vim
 configure git
 configure visual-studio-code
 configure microsoft-company-portal "/Applications/Company Portal.app/Contents/MacOS/Company Portal"
+configure keychain
