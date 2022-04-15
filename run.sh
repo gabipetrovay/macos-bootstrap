@@ -127,6 +127,7 @@ brew_install iterm2 "/Applications/iTerm.app/Contents/MacOS/iTerm2" iTerm2
 brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/MacOS/Microsoft Outlook" "Microsoft Outlook"
 brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
 brew_install teleport "/opt/homebrew/bin/tsh"
+brew_install awscli "/opt/homebrew/bin/aws"
 #brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
 #brew install tmux
 #brew install wget
