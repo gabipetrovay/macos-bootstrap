@@ -1,5 +1,21 @@
 protocol=fortinet
+
 server=vpn-prd.entcloud.swisscom.com
+
+# this trusts the server above
 servercert=pin-sha256:FEcJpKK3EyobQmF8grIPYsK5AjcB7H9DCjDUOe/pUxo=
+
+# company user name
 user=t...
+
+# consume the passwords from stdin (or piped into the command)
 passwd-on-stdin
+
+# enable timestamps in the stdout logs
+timestamp
+
+# make dead-peer-detection checks only every 10 hours (to avoid interruptions when the computer goes to sleep)
+force-dpd=36000
+
+# more log output
+verbose
