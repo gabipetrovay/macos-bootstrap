@@ -135,7 +135,6 @@ brew_install awscli "/opt/homebrew/bin/aws"
 #brew install bitwarden-cli
 
 # programming languages and frameworks
-brew_install docker
 brew_install lazydocker
 brew_install kubectl
 brew_install kubectx
@@ -156,6 +155,7 @@ configure ohmyzsh
 configure iterm2
 configure vim
 configure git
+configure docker
 configure visual-studio-code
 configure microsoft-company-portal "/Applications/Company Portal.app/Contents/MacOS/Company Portal"
 configure keychain
