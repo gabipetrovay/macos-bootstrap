@@ -8,6 +8,9 @@ user=t...@swisscom.ras
 # consume the passwords from stdin (or piped into the command)
 passwd-on-stdin
 
+# for Internet access we require a proxy
+proxy=aproxy.corproot.net:8080
+
 # enable timestamps in the stdout logs
 timestamp
 
