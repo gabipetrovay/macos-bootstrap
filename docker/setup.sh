@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if [ -f "/Applications/Docker.app/Contents/MacOS/Docker" ]
+then
+  exit
+fi
+
 echo "  ⚠️a Check if you require a Docker Desktop license!"
 
 curl --silent --location --output /tmp/Docker.dmg "https://desktop.docker.com/mac/main/arm64/Docker.dmg"
