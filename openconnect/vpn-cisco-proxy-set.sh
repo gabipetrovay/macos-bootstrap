@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+CISCO_PROXY_CONFIG_URL="http://aproxy.corproot.net/proxy.pac"
+CISCO_PROXY_EXCEPTION_LIST="sg0017*.corproot.net sg0016*.corproot.net lyncpool*.swisscom.com 127.0.0.1 vidia.swisscom.ch vpre.swisscom.ch *.pv.swisscom.ch"
+
 scutil >/dev/null 2>&1 <<-EOF
   open
   get State:/Network/Global/Proxies
