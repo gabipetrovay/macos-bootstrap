@@ -3,7 +3,7 @@
 if [ "${VIM_PACK_DIR}" == "" ]
 then
   VIM_PACK_DIR=plugins
-  echo "  ⚠️  WARNING: no VIM_PACK_DIR was provided. Uding the default value: ${VIM_PACK_DIR}"
+  echo "  ⚠️  WARNING: no VIM_PACK_DIR was provided. Using the default value: ${VIM_PACK_DIR}"
 fi
 
 function install_plugin {
