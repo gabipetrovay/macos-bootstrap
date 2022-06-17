@@ -7,9 +7,9 @@ function vf {
 }
 
 function delete_resolvers {
-  if [[ -z `find /etc/resolver -maxdepth 0 -empty` ]]
+  if [ -d /etc/resolver ]
   then
-    sudo rm -f /etc/resolver/*
+    sudo rm -rf /etc/resolver/
   fi
 }
 
@@ -21,9 +21,10 @@ function vpn {
 
   delete_resolvers
 
+  # kill existing VPN connection when ran without the token argument
   if [[ "${TOKEN}" == "" ]]
   then
-    pgrep openconnect > /dev/null && echo "Stopping VPN connection" && sudo kill -2 `pgrep openconnect`
+    pgrep openconnect > /dev/null && echo "Stopping VPN connection" && sudo pkill openconnect
     return
   fi
 
@@ -32,15 +33,15 @@ function vpn {
 
   if [[ "${TYPE}" == "cisco" ]]
   then
-    CREDS="${RSA_PIN}${TOKEN}"
+    CREDS="${CISCO_RSA_PIN}${TOKEN}"
   else
-    CREDS="${VPN_PASSWORD}\n${TOKEN}\n"
+    CREDS="${FORTI_PASSWORD}\n${TOKEN}\n"
   fi
 
   echo "${CREDS}" | sudo openconnect --background --config ~/".vpn-${TYPE}" > "${VPN_LOG_PATH}" 2>&1
 
-  if [[ "${TYPE}" == "forti" ]]
+  if [[ "${TYPE}" == "forti" && -d ~/.vpn-forti-resolver ]]
   then
-    sudo cp ~/resolver/* /etc/resolver/
+    sudo cp -r ~/.vpn-forti-resolver/ /etc/resolver/
   fi
 }

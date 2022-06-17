@@ -1,3 +1,6 @@
+# shared secrets
 export VPN_USERNAME=taabbbb1
-export VPN_PASSWORD="my secret password"
-export RSA_PIN=123456
+# Forti VPN secrets
+export FORTI_PASSWORD="my secret password"
+# Cisco VPN secrets
+export CISCO_RSA_PIN=123456

@@ -9,6 +9,12 @@ sudo true
 function load_secrets {
   local COMPONENT=$1
 
+  if [ -f ./"${COMPONENT}/secrets-example.sh" -a ! -f ./"${COMPONENT}/secrets.sh" ]
+  then
+    echo "  🆘 The secrets.sh file not found for ${COMPONENT}"
+    return 1
+  fi
+
   if [ -f ./"${COMPONENT}/secrets.sh" ]
   then
     source ./"${COMPONENT}/secrets.sh"
@@ -77,15 +83,21 @@ function configure {
 
   # load secrets, if any
   load_secrets "${TARGET}"
-
-  # any setup script
-  if [ -f ./"${TARGET}/setup.sh" ]
+  if [ $? -ne 0 ]
   then
-    ./"${TARGET}/setup.sh"
-    echo "  ❇️  ${TARGET} configured"
-  else
-    echo "  🆘 No setup script found for ${TARGET}"
+    return 1
   fi
+
+  # check for setup script
+  if [ ! -f ./"${TARGET}/setup.sh" ]
+  then
+    echo "  🆘 No setup script found for ${TARGET}"
+    return 2
+  fi
+
+  # run the setup script
+  ./"${TARGET}/setup.sh"
+  echo "  ❇️  ${TARGET} configured"
 }
 
 

@@ -3,7 +3,7 @@ protocol=fortinet
 server=vpn-prd.entcloud.swisscom.com
 
 # this trusts the server above
-servercert=pin-sha256:FEcJpKK3EyobQmF8grIPYsK5AjcB7H9DCjDUOe/pUxo=
+servercert=pin-sha256:kBRfA81iUO2e1o+j3X9kVzgqAchz6rkrzmg+Rs0guwA=
 
 # company user name
 user=t...
