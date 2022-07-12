@@ -140,7 +140,8 @@ brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/Mac
 brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
 brew_install teleport "/opt/homebrew/bin/tsh"
 brew_install awscli "/opt/homebrew/bin/aws"
-#brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
+brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
+
 #brew install tmux
 #brew install wget
 #brew install s3cmd
