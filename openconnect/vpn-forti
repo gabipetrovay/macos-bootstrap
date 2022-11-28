@@ -19,3 +19,6 @@ force-dpd=36000
 
 # more log output
 verbose
+
+# DTLS will make your connection timeout very fast (10 heartbeats)
+no-dtls
