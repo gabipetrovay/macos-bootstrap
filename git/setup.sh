@@ -9,6 +9,8 @@ git config --global user.email "${GIT_USER_EMAIL}"
 git config --global author.name "${GIT_USER_NAME}"
 git config --global author.email "${GIT_USER_EMAIL}"
 
+git config --global credential.helper "osxkeychain"
+
 if [ -n "${GIT_WORK_CONFIG}" ]
 then
   git config --global "includeIf.${GIT_WORK_CONFIG_CONDITION}.path" "${GIT_WORK_CONFIG_PATH}"

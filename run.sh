@@ -152,6 +152,7 @@ brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
 brew_install lazydocker
 brew_install kubectl
 brew_install kubectx
+brew_install stern
 #brew install minikube
 brew_install node "/opt/homebrew/bin/node" Node.js
 #brew install nvm
