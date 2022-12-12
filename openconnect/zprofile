@@ -29,7 +29,6 @@ function vpn {
   fi
 
   echo "Starting VPN connection"
-  echo "Logs will be written to ${VPN_LOG_PATH}"
 
   if [[ "${TYPE}" == "cisco" ]]
   then
@@ -44,4 +43,16 @@ function vpn {
   then
     sudo cp -r ~/.vpn-forti-resolver/ /etc/resolver/
   fi
+
+  sleep 1
+
+  if ! pgrep openconnect > /dev/null
+  then
+    echo "VPN connection failed"
+    delete_resolvers
+    tail "${VPN_LOG_PATH}"
+    return 1
+  fi
+
+  echo "Logs will be written to ${VPN_LOG_PATH}"
 }
