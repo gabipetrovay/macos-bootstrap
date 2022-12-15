@@ -139,7 +139,10 @@ brew_install visual-studio-code "/opt/homebrew/bin/code" "VS Code"
 brew_install iterm2 "/Applications/iTerm.app/Contents/MacOS/iTerm2" iTerm2
 brew_install microsoft-outlook "/Applications/Microsoft Outlook.app/Contents/MacOS/Microsoft Outlook" "Microsoft Outlook"
 brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/Teams" "Microsoft Teams"
-brew_install teleport "/opt/homebrew/bin/tsh"
+# Teleport issues:
+# - Homebrew teleport is the latest version and this is not compatible with our old server 
+# - our teleport config point to /usr/local/bin/tsh which means an extra symlink would be required
+#brew_install teleport "/opt/homebrew/bin/tsh"
 brew_install awscli "/opt/homebrew/bin/aws"
 brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
 
@@ -170,6 +173,8 @@ configure ohmyzsh
 configure iterm2
 configure vim
 configure git
+# Note: this should be removed once Homebrew teleport is supported
+configure teleport
 configure docker
 configure visual-studio-code
 configure microsoft-company-portal "/Applications/Company Portal.app/Contents/MacOS/Company Portal"
