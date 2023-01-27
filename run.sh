@@ -131,6 +131,7 @@ brew_install tree
 brew_install watch
 brew_install gh
 brew_install fly
+brew_install terraform
 brew_install openconnect
 #brew install openfortivpn
 #brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
