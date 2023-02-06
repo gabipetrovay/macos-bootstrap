@@ -8,10 +8,8 @@ sed "s/user=.*/user=${VPN_USERNAME}@swisscom.ras/" "${DIRNAME}/vpn-cisco" > ~/.v
 sed "s/user=.*/user=${VPN_USERNAME}/" "${DIRNAME}/vpn-forti" > ~/.vpn-forti
 
 # hooks to set/unset Mac proxy required when this VPN is connected
-sudo mkdir -p /etc/vpnc/post-connect.d
-sudo cp "${DIRNAME}/vpn-cisco-proxy-set.sh" /etc/vpnc/post-connect.d/
-sudo mkdir -p /etc/vpnc/post-disconnect.d
-sudo cp "${DIRNAME}/vpn-cisco-proxy-unset.sh" /etc/vpnc/post-disconnect.d/
+sudo mkdir -p /etc/vpnc
+sudo cp -r "${DIRNAME}/etc/vpnc"/* /etc/vpnc/
 # do not prompt for password when openconnect is ran or killed with sudo
 sudo cp "${DIRNAME}/sudoers.d" /etc/sudoers.d/openconnect
 

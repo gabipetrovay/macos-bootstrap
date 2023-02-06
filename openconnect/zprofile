@@ -6,25 +6,25 @@ function vf {
   vpn forti "$1"
 }
 
-function delete_resolvers {
-  if [ -d /etc/resolver ]
-  then
-    sudo rm -rf /etc/resolver/
-  fi
-}
-
 function vpn {
   local TYPE=$1
   local TOKEN=$2
 
   VPN_LOG_PATH=~/.vpnlog
 
-  delete_resolvers
-
   # kill existing VPN connection when ran without the token argument
   if [[ "${TOKEN}" == "" ]]
   then
-    pgrep openconnect > /dev/null && echo "Stopping VPN connection" && sudo pkill openconnect
+    pgrep openconnect > /dev/null && echo "Stopping VPN connection" && sudo VPN_TYPE="${TYPE}" pkill openconnect
+    return
+  fi
+
+  # report that a VPN connection is already open
+  if pgrep openconnect > /dev/null
+  then
+    VPN_COMMAND=$(pgrep -lf openconnect)
+    VPN_TYPE=${VPN_COMMAND##*-}
+    echo "A ${VPN_TYPE} VPN instance is already running"
     return
   fi
 
@@ -37,19 +37,14 @@ function vpn {
     CREDS="${FORTI_PASSWORD}\n${TOKEN}\n"
   fi
 
-  echo "${CREDS}" | sudo openconnect --background --config ~/".vpn-${TYPE}" > "${VPN_LOG_PATH}" 2>&1
-
-  if [[ "${TYPE}" == "forti" && -d ~/.vpn-forti-resolver ]]
-  then
-    sudo cp -r ~/.vpn-forti-resolver/ /etc/resolver/
-  fi
+  # the VPN_TYPE will be used in the connection hooks to determine actions based on which VPN type is used
+  echo "${CREDS}" | sudo VPN_TYPE="${TYPE}" openconnect --background --config ~/".vpn-${TYPE}" > "${VPN_LOG_PATH}" 2>&1
 
   sleep 1
 
   if ! pgrep openconnect > /dev/null
   then
     echo "VPN connection failed"
-    delete_resolvers
     tail "${VPN_LOG_PATH}"
     return 1
   fi
