@@ -146,7 +146,7 @@ brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/T
 # - our teleport config point to /usr/local/bin/tsh which means an extra symlink would be required
 #brew_install teleport "/opt/homebrew/bin/tsh"
 brew_install awscli "/opt/homebrew/bin/aws"
-brew_install "cloudfoundry/tap/cf-cli@7" "cf CLI"
+brew_install "cloudfoundry/tap/cf-cli@7" "/opt/homebrew/bin/cf" "cf CLI"
 
 #brew install tmux
 #brew install wget

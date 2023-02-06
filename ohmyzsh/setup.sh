@@ -17,10 +17,11 @@ rm -rf ~/.oh-my-zsh
 rm -f ~/.zshrc*
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-enable_plugin git
 enable_plugin docker
-enable_plugin kubectl
-enable_plugin minikube
 enable_plugin gh
+enable_plugin git
 enable_plugin golang
 enable_plugin helm
+enable_plugin kubectl
+enable_plugin minikube
+enable_plugin terraform
