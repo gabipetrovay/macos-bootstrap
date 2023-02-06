@@ -26,4 +26,5 @@ mkdir -p ~/".vim/pack/${VIM_PACK_DIR}/start"
 install_plugin ctrlp https://github.com/ctrlpvim/ctrlp.vim.git
 install_plugin ale https://github.com/dense-analysis/ale.git
 install_plugin fugitive https://github.com/tpope/vim-fugitive.git
+install_plugin vim-terraform https://github.com/hashivim/vim-terraform.git
 
