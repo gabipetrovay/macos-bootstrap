@@ -134,6 +134,7 @@ brew_install fly
 brew_install terraform
 brew_install tmux
 brew_install openconnect
+brew install wget
 #brew install openfortivpn
 #brew_install forticlient-vpn "/Applications/FortiClient.app/Contents/MacOS/FortiClient" "FortiClient VPN"
 brew_install google-chrome "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "Google Chrome"
@@ -148,8 +149,6 @@ brew_install microsoft-teams "/Applications/Microsoft Teams.app/Contents/MacOS/T
 brew_install awscli "/opt/homebrew/bin/aws"
 brew_install "cloudfoundry/tap/cf-cli@7" "/opt/homebrew/bin/cf" "cf CLI"
 
-#brew install tmux
-#brew install wget
 #brew install s3cmd
 #brew install bitwarden-cli
 
@@ -157,6 +156,7 @@ brew_install "cloudfoundry/tap/cf-cli@7" "/opt/homebrew/bin/cf" "cf CLI"
 brew_install lazydocker
 brew_install kubectl
 brew_install kubectx
+brew_install k9s
 brew_install stern
 #brew install minikube
 brew_install node "/opt/homebrew/bin/node" Node.js
